@@ -21,7 +21,6 @@ module.exports = merge(common, {
       },
     ],
   },
-
   plugins: [
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: "./sw.bundle.js",
@@ -41,7 +40,7 @@ module.exports = merge(common, {
             ),
           handler: "StaleWhileRevalidate",
           options: {
-            cacheName: "restaurant -image-api",
+            cacheName: "restaurant-image-api",
           },
         },
       ],

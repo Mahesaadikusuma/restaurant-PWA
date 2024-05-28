@@ -1,4 +1,6 @@
 import "regenerator-runtime";
+import "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit";
 import "../styles/main.scss";
 import "./views/component/hero.js";
 import App from "./views/app";

@@ -144,6 +144,7 @@ main .hero {
   height: 80vh;
   background-color: green;
   background-image: url("/src/public/images/heros/hero-image_2.jpg");
+  background-image: -webkit-image-set(url("/src/public/images/heros/hero-image_2.jpg") 1x, url("/src/public/images/heros/hero-image_2.jpg") 2x);
   background-size: cover;
   background-position: center;
   -o-object-fit: cover;
@@ -709,8 +710,7 @@ main .explore-restaurant .restaurant-detail #detail .container .customer-add-inp
 }
 main .explore-restaurant .restaurant-detail #detail .container .customer-add-input .customer-title > input {
   width: 100%;
-  height: 40px;
-  padding: 0 10px;
+  padding: 1rem;
 }
 main .explore-restaurant .restaurant-detail #detail .container .customer-add-input .customer-body {
   max-width: 500px;

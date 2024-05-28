@@ -15,6 +15,7 @@ const Toggle = {
 
   _toggleDrawer(event, navMenuMobile) {
     event.stopPropagation();
+    console.log(navMenuMobile);
     navMenuMobile.classList.toggle("active");
   },
 

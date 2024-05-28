@@ -1,5 +1,8 @@
 @media screen and (max-width: 1200px) {
   main {
+    .hero {
+      background: url("/src/public/images/heros/hero-image_2-large.jpg");
+    }
     .explore-restaurant {
       .restaurant {
         display: grid;
@@ -59,6 +62,9 @@
 
 @media screen and (max-width: 768px) {
   main {
+    .hero {
+      background: url("/src/public/images/heros/hero-image_2-small.jpg");
+    }
     .hero {
       .hero-body {
         margin: 0 auto;

@@ -10,6 +10,7 @@ const ListRestaurant = {
       <hero-bar></hero-bar>
       <div class="explore-restaurant">
         <h2>Explore Restaurant</h2> 
+        
         <section class="card-restaurant"></section>
         <div class="restaurant" id="restaurant-container-populer"></div>
       </div>
@@ -40,7 +41,7 @@ const ListRestaurant = {
         restaurantContainer.innerHTML =
           "<p>Failed to load restaurants. Please try again later.</p>";
       }
-    }, 2000);
+    }, 300);
   },
 };
 

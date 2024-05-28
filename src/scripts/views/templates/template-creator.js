@@ -1,19 +1,16 @@
 import CONFIG from "../../globals/config";
 
 const large = `large`;
-
-// <button aria-label="like this restaurant" id="likeButton" class="like">
-// <i class="fa fa-heart" aria-hidden="true"></i>
-// </button>
+const small = `small`;
 
 const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+  <button aria-label="like this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
 const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
@@ -22,10 +19,15 @@ const createDetailTemplate = (restaurant) => `
     <section id="detail">
       <div class="container">
         <div class="restaurant-hero">
-          <img src="${CONFIG.BASE_IMAGE}/${large}/${
-  restaurant.pictureId
-}" alt="" />
+          <picture>
+            <source class="lazyload" media="(max-width: 600px)" data-srcset="${
+              CONFIG.BASE_IMAGE
+            }/${small}/${restaurant.pictureId}">
 
+            <img class="lazyload" data-src="${CONFIG.BASE_IMAGE}/${large}/${
+  restaurant.pictureId
+}" alt="${restaurant.name}" class="lazyload" />
+        </picture>
           <div class="restaurantdetail">
             <div class="title-like" >
               <h1 class="restaurant-name">${restaurant.name}</h1>
@@ -147,9 +149,12 @@ const createReviewTemplate = (reviews) => `
 const createRestaurantItemTemplate = (restaurant) => `
 <article class="restaurant-item">
         <picture>
-          <img src="${CONFIG.BASE_IMAGE}/${large}/${restaurant.pictureId}" alt="${restaurant.name}" />
+          
+          <source class="lazyload" media="(max-width: 600px)" data-srcset="${CONFIG.BASE_IMAGE}/${small}/${restaurant.pictureId}">
+
+          <img class="lazyload" data-src="${CONFIG.BASE_IMAGE}/${large}/${restaurant.pictureId}" alt="${restaurant.name}" class="lazyload" />
         </picture>
-        
+
         <div class="restaurant-item-city">
           <div class="">
             <p class="city">${restaurant.city}</p>
@@ -175,98 +180,54 @@ const createRestaurantItemTemplate = (restaurant) => `
           </div>
         </div>
         <div class="restaurant-item-content">
-          
-          <h1>
-          
-            <a href="/#/detail/${restaurant.id}">
-              ${restaurant.name}
-            </a>
-          </h1>
+          <h1 class="restaurant-title"><a href="/#/detail/${restaurant.id}">${restaurant.name}</a></h1>
           <p>${restaurant.description}</p>
         </div>
 </article>`;
+// <img data-src="" alt="" class="skeleton lazyload" />;
 
 const createSkeletonListTemplate = () => `
-  
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
+  <div class="card-restaurant-item">
+    <div class="card-restaurant-header">
+       <picture>
+        <source data-srcset="/images/placeholder.png" type="image/webp">
+        <source data-srcset="/images/placeholder.png" type="image/jpeg">
+        <img data-src="/images/placeholder.png" alt="" class="skeleton lazyload" />
+      </picture>
 
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
+      <h1 class="card-restaurant-title skeleton"></h1>
+      <p class="card-restaurant-date skeleton"></p>
 
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
 
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
+      <p class="card-restaurant-deskription skeleton"></p>
+      <p class="card-restaurant-deskription skeleton"></p>
+      <p class="card-restaurant-deskription skeleton"></p>
+    </div>
+  </div>
 
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
+  <div class="card-restaurant-item">
+    <div class="card-restaurant-header">
+       <picture>
+        <source data-srcset="/images/placeholder.png" type="image/webp">
+        <source data-srcset="/images/placeholder.png" type="image/jpeg">
+        <img data-src="/images/placeholder.png" alt="" class="skeleton lazyload" />
+      </picture>
 
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
+      <h1 class="card-restaurant-title skeleton"></h1>
+      <p class="card-restaurant-date skeleton"></p>
 
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
-
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
-
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
-
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
-
-      <div class="card-restaurant-item">
-        <div class="card-restaurant-header">
-          <img src="" alt="" class="skeleton" />
-          <h1 class="card-restaurant-title skeleton"></h1>
-          <p class="card-restaurant-date skeleton"></p>
-
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-          <p class="card-restaurant-deskription skeleton"></p>
-        </div>
-      </div>
-    
+      <p class="card-restaurant-deskription skeleton"></p>
+      <p class="card-restaurant-deskription skeleton"></p>
+      <p class="card-restaurant-deskription skeleton"></p>
+    </div>
+  </div>
 `;
 
 const createSkeletonDetailTemplate = () => `
 <section id="detail">
       <div class="container">
         <div class="restaurant-hero">
-          <img src="" alt="" class="skeleton" />
+          <img src="" alt="" class="skeleton lazyload" />
           <div class="restaurantdetail">
             <div class="title-like">
               <h1 class="restaurant-name skeleton"></h1>

@@ -2,8 +2,6 @@ import UrlParser from "../../routes/url-parser";
 import restaurantDB from "../../data/restaurantDB";
 import {
   createDetailTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
   createSkeletonDetailTemplate,
 } from "../templates/template-creator";
 
@@ -41,8 +39,7 @@ const DetailRestaurant = {
         //   "#likeButtonContainer"
         // );
 
-        // likeButtonContainer.innerHTML += createLikedButtonTemplate();
-
+        // likeButtonContainer.innerHTML += createLikeButtonTemplate();
         LikeButtonInitiator.init({
           likeButtonContainer: document.querySelector("#likeButtonContainer"),
           restaurant: {
@@ -60,7 +57,7 @@ const DetailRestaurant = {
         restaurantContainer.innerHTML =
           "<p>Failed to load restaurant details. Please try again later.</p>";
       }
-    }, 500);
+    }, 300);
 
     // Set event listener on document for dynamic content
     document.addEventListener("submit", async (event) => {
@@ -78,6 +75,19 @@ const DetailRestaurant = {
       await restaurantDB.restaurantReview(review);
       const updatedRestaurant = await restaurantDB.restaurantDetail(url.id);
       restaurantContainer.innerHTML = createDetailTemplate(updatedRestaurant);
+
+      LikeButtonInitiator.init({
+        likeButtonContainer: document.querySelector("#likeButtonContainer"),
+        restaurant: {
+          id: restaurant.id,
+          name: restaurant.name,
+          rating: restaurant.rating,
+          city: restaurant.city,
+          address: restaurant.address,
+          pictureId: restaurant.pictureId,
+          description: restaurant.description,
+        },
+      });
 
       nameReview.value = "";
       reviewBody.value = "";
