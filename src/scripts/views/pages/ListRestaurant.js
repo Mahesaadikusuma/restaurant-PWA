@@ -34,7 +34,7 @@ const ListRestaurant = {
         skeleton.style.display = "none";
         restaurants.forEach((restaurant) => {
           restaurantContainer.innerHTML +=
-            createRestaurantItemTemplate(restaurant);
+          createRestaurantItemTemplate(restaurant);
         });
       } catch (error) {
         console.error("Error fetching restaurants:", error);
